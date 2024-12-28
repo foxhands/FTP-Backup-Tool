@@ -41,7 +41,7 @@ FTP Backup Tool is a utility for automating the process of backing up local data
 ### Installation
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/ftp-backup-tool.git
+   git clone https://github.com/foxhands/ftp-backup-tool.git
    ```
 2. Navigate to the project folder:
    ```bash
