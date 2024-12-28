@@ -1,103 +1,103 @@
 # FTP Backup Tool
 
-## Описание
-FTP Backup Tool — это инструмент для автоматизации процесса резервного копирования локальных данных и их загрузки на FTP-сервер. Программа включает функции:
+## Description
+FTP Backup Tool is a utility for automating the process of backing up local data and uploading it to an FTP server. The program includes the following features:
 
-- Локальное создание резервных копий.
-- Загрузка резервных копий на FTP-сервер.
-- Очистка старых локальных и удалённых копий.
-- Логирование всех действий для удобства мониторинга.
-
----
-
-## Основные функции
-
-### 1. Локальное резервное копирование
-- Рекурсивное копирование содержимого указанной папки в резервный каталог с текущей датой.
-
-### 2. Загрузка на FTP
-- Загрузка резервной копии на FTP-сервер с автоматическим созданием удалённых папок.
-- Проверка структуры FTP и создание директорий по мере необходимости.
-
-### 3. Очистка старых резервных копий
-- Удаление локальных резервных копий, которые старше указанного периода.
-- Удаление старых резервных копий на FTP-сервере.
-
-### 4. Логирование
-- Ведение логов о каждом этапе процесса: копирование, загрузка, удаление и ошибки.
-- Логи сохраняются в файле `backup.log`.
+- Local backup creation.
+- Uploading backups to an FTP server.
+- Cleaning up old local and remote backups.
+- Logging all actions for monitoring and debugging.
 
 ---
 
-## Установка и использование
+## Key Features
 
-### Требования
+### 1. Local Backup Creation
+- Recursively copy the contents of a specified folder to a backup directory with the current date.
+
+### 2. FTP Upload
+- Upload backups to an FTP server with automatic remote folder creation.
+- Validate FTP structure and create directories as needed.
+
+### 3. Old Backup Cleanup
+- Delete local backups older than a specified period.
+- Remove outdated backups from the FTP server.
+
+### 4. Logging
+- Logs every step of the process: copying, uploading, deleting, and errors.
+- Logs are saved in the `backup.log` file.
+
+---
+
+## Installation and Usage
+
+### Requirements
 - Python 3.8+
-- Библиотеки:
+- Libraries:
   - `ftplib`
   - `pathlib`
   - `shutil`
 
-### Установка
-1. Клонируйте репозиторий:
+### Installation
+1. Clone the repository:
    ```bash
    git clone https://github.com/your-username/ftp-backup-tool.git
    ```
-2. Перейдите в папку проекта:
+2. Navigate to the project folder:
    ```bash
    cd ftp-backup-tool
    ```
 
-### Настройка
-1. Обновите настройки в скрипте `main.py`:
+### Configuration
+1. Update the settings in `main.py`:
    ```python
-   local_folder = r"D:\\Work\\Obsidian"  # Путь к локальной папке для резервного копирования
-   backup_folder = r"H:\\Obsidian\\DailyBackup"  # Путь к папке для локальных резервных копий
+   local_folder = r"D:\\Work\\Obsidian"  # Path to the local folder for backups
+   backup_folder = r"H:\\Obsidian\\DailyBackup"  # Path to the local backup folder
    ftp_credentials = {
        'host': 'ftp.example.com',
        'username': 'your_username',
        'password': 'your_password'
    }
-   remote_folder = "/backups/obsidian"  # Папка на FTP-сервере
+   remote_folder = "/backups/obsidian"  # Remote folder on the FTP server
    ```
 
-### Запуск
-Запустите скрипт с помощью Python:
+### Run the Script
+Run the script using Python:
 ```bash
 python main.py
 ```
 
 ---
 
-## Структура проекта
+## Project Structure
 
 ```plaintext
 ftp-backup-tool/
-├── main.py          # Основной скрипт
-├── README.md        # Описание проекта
-├── backup.log       # Лог-файл (создаётся автоматически)
-└── requirements.txt # Список зависимостей (если нужно)
+├── main.py          # Main script
+├── README.md        # Project description
+├── backup.log       # Log file (automatically generated)
+└── requirements.txt # List of dependencies (if needed)
 ```
 
 ---
 
-## Как это работает
-1. **Создание резервной копии:**
-   - Создаётся локальная копия содержимого папки с добавлением текущей даты в имя.
+## How It Works
+1. **Backup Creation:**
+   - Creates a local copy of the folder contents with the current date appended to the name.
 
-2. **Загрузка на FTP:**
-   - Резервная копия загружается в удалённую папку на FTP-сервере.
-   - Папки создаются автоматически, если их нет.
+2. **FTP Upload:**
+   - Uploads the backup to a remote folder on the FTP server.
+   - Automatically creates folders if they don't exist.
 
-3. **Очистка старых копий:**
-   - Локальные и удалённые копии старше 30 дней удаляются.
+3. **Cleanup of Old Backups:**
+   - Deletes local and remote backups older than 30 days.
 
-4. **Логирование:**
-   - Все шаги записываются в лог-файл для диагностики.
+4. **Logging:**
+   - Logs all steps to a file for diagnostics.
 
 ---
 
-## Пример лог-файла
+## Example Log File
 ```plaintext
 2024-12-28 10:00:00,000 - INFO - Starting backup process.
 2024-12-28 10:01:00,000 - INFO - Finished copying content from D:\Work\Obsidian to H:\Obsidian\DailyBackup\2024-12-28.
@@ -109,16 +109,16 @@ ftp-backup-tool/
 
 ---
 
-## Будущие улучшения
-- Поддержка SFTP для более безопасной загрузки.
-- Уведомления через email или Telegram.
-- GUI для настройки и запуска.
-- Интеграция с облачными хранилищами (Google Drive, AWS S3).
+## Future Improvements
+- Add SFTP support for secure uploads.
+- Notifications via email or Telegram.
+- GUI for configuration and execution.
+- Integration with cloud storage (Google Drive, AWS S3).
 
 ---
 
-## Лицензия
-Проект распространяется под лицензией MIT. Подробнее см. в файле `LICENSE`.
+## License
+This project is licensed under the MIT License. See the `LICENSE` file for details.
 
 ---
 
